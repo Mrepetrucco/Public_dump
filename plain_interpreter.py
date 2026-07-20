@@ -90,6 +90,34 @@ class AIModeDriver:
     def close(self):
         self.browser.close(); self._pw.stop()
 
+
+# ---------------- P-a stable engine (Gemini API key) with emission-bound guard ----------------
+MIN_CAP = 2500  # floor's own rule: reasoning models need cap >= reasoning + 2x visible
+class GeminiAPIEngine:
+    """Stable keyed alternative to the browser P-c1 path. Enforces MIN_CAP and does a
+    one-shot truncation retry (doubling the cap) so the verbose Z envelope never truncates —
+    the defect the live test surfaced (900-tok cap ate the envelope)."""
+    def __init__(self):
+        self.key = os.environ.get('GEMINI_API_KEY')
+        if not self.key: sys.exit('P-a mode needs GEMINI_API_KEY in env. Or use P-c1 (browser) / P-c2 (Nano).')
+    def _once(self, prompt, cap):
+        import urllib.request
+        url=('https://generativelanguage.googleapis.com/v1beta/models/'
+             'gemini-2.5-flash:generateContent?key='+self.key)
+        body={'contents':[{'parts':[{'text':prompt}]}],'generationConfig':{'maxOutputTokens':cap}}
+        req=urllib.request.Request(url,data=json.dumps(body).encode(),headers={'content-type':'application/json'})
+        with urllib.request.urlopen(req,timeout=60) as r: d=json.load(r)
+        c=d['candidates'][0]
+        txt='\n'.join(p.get('text','') for p in c.get('content',{}).get('parts',[]))
+        return txt, c.get('finishReason')
+    def ask(self, prompt, timeout_s=60):
+        cap=MIN_CAP
+        txt,fin=self._once(prompt,cap)
+        if fin in ('MAX_TOKENS','LENGTH') or (txt and '{' in txt and txt.rstrip()[-1:] != '}'):
+            txt,fin=self._once(prompt,cap*2)   # truncation retry
+        return txt
+    def close(self): pass
+
 def build_prompt(floor, user_task, memory_txt):
     return (floor + '\n\n## PERSISTED CONTEXT (md.txt sandbox)\n' + memory_txt[:4000]
             + '\n\n## TASK\n' + user_task + '\n\nEmit ONLY the Z JSON object.')
@@ -111,10 +139,11 @@ def main():
     verdict, why = rec.screen_instruction(task)
     if verdict == 'RAISE':
         print(f'RAISED instead of executed (R5/J2): {why}'); return
+    mode = os.environ.get('PLAIN_MODE', 'browser')
     try:
-        drv = AIModeDriver()
+        drv = GeminiAPIEngine() if mode == 'api' else AIModeDriver()
     except Exception as e:
-        sys.exit(f'P-c1 driver unavailable ({e}). Fallbacks: P-a Gemini key CLI / P-c2 Chrome Nano.')
+        sys.exit(f'engine unavailable ({e}). Modes: PLAIN_MODE=api (P-a, stable, needs GEMINI_API_KEY) or default browser P-c1 (keyless, unstable).')
     raw = drv.ask(build_prompt(floor, task, memory)); drv.close()
     z = parse_z(raw)
     if z is None:

@@ -122,4 +122,6 @@ REQUESTER-SIDE SETUP & PROHIBITIONS (bind the runner/orchestrator, not this engi
 - IDENTICAL-ANSWER SUSPICION: independently-queried engines returning identical answers => suspect a shared-prompt artefact before crediting convergence; re-test with the inducing instruction removed. Convergence verifies MACHINERY, never settles CONTEXT/intent.
 - Cost fields: CSUL is an ESTIMATE (ground truth = the owner's usage page); OCSUL/API/XAPI surfaced per run; TMU lists the team engaged.
 
+CREATIVE-CONTENT CAP (13 Aug): a maximum of 10% of an emission's effort/tokens may be spent on creative content (the creative-envelope titled prose section); the governed deliverable + schema take the remaining >=90%.
+
 *— LEAN7POF2 V2.1 (v2.1) · external portable edition · reduced set R1–R7 · AX7 v1.0 spine · portable floor mandatory · native footer schema v2.1 (Claude-side; exemptions eliminated) · native-mode embedded Reconciler required · Claude-only accelerators excluded by design —*

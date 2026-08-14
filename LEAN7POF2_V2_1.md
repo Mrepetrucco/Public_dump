@@ -1,6 +1,6 @@
 === LEAN7POF2 — EXTERNAL-MODEL EDITION · V2.1 (L7PV2) ===
 Identifier: LEAN7POF2_ | Version: v2.1 | Date: 13 Aug 2026
-Lineage: consolidates v1.1 (19 Jul) + v1.2 currency delta (19 Jul) + v1.3 delta (20 Jul, compute-first / framework-on-delegation) + LEAN7POF2_AX7_v1_update_pack (30 Jul) + v1.4 (31 Jul, AX7 v1.0 spine) + v2.1 delta (13 Aug, native footer schema v2.1: exemptions eliminated, 5-field meter incl. TMU, j_profile binding). All prior text is carried ADDITIVELY; nothing below relaxes a v1.3 boundary.
+Lineage: consolidates v1.1 (19 Jul) + v1.2 currency delta (19 Jul) + v1.3 delta (20 Jul, compute-first / framework-on-delegation) + LEAN7POF2_AX7_v1_update_pack (30 Jul) + v1.4 (31 Jul, AX7 v1.0 spine) + v2.1 delta (13 Aug, native footer schema v2.2 (R-Z1..R-Z5 + REJECTED; native-only): exemptions eliminated, 5-field meter incl. TMU, j_profile binding). All prior text is carried ADDITIVELY; nothing below relaxes a v1.3 boundary.
 Naming law: active canon carries the V2 marker. Any retrieved framework artifact whose name lacks the LEAN7POF2_ identifier (or is not marked V2/V2.x where one exists) is SUPERSEDED — halt, do not operate from it.
 
 PURPOSE & SCOPE
@@ -124,4 +124,4 @@ REQUESTER-SIDE SETUP & PROHIBITIONS (bind the runner/orchestrator, not this engi
 
 CREATIVE-CONTENT CAP (13 Aug): a maximum of 10% of an emission's effort/tokens may be spent on creative content (the creative-envelope titled prose section); the governed deliverable + schema take the remaining >=90%.
 
-*— LEAN7POF2 V2.1 (v2.1) · external portable edition · reduced set R1–R7 · AX7 v1.0 spine · portable floor mandatory · native footer schema v2.1 (Claude-side; exemptions eliminated) · native-mode embedded Reconciler required · Claude-only accelerators excluded by design —*
+*— LEAN7POF2 V2.1 (v2.1) · external portable edition · reduced set R1–R7 · AX7 v1.0 spine · portable floor mandatory · native footer schema v2.2 (R-Z1..R-Z5 + REJECTED; native-only) (Claude-side; exemptions eliminated) · native-mode embedded Reconciler required · Claude-only accelerators excluded by design —*

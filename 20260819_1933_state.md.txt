@@ -1,0 +1,5 @@
+=== STATE · _7POF_ V3 · 20260819_1933 ===
+New canonical: _7POF_ V3 (LEAN7POF_V3_FULL_CANON.md.txt) supersedes V2.3. Change: PART V Reconciler/Runner split — Reconciler=Producer(schema+raw emit), Runner=independent Checker(BX1 validation) -> REJECTED VERIFIED (fixes R-SELF). Drift mitigation: both bind same versioned Zblock_Schema + version-match gate (closes Fable-surfaced contract-mismatch). Fact-gate for fact-bearing output.
+Validation: Fable adversarial battle (1 of 3 used, MEASURED $0.016) — PRO confirmed (eliminates self-validation bias), CON (schema drift) mitigated. Token-worthiness PASS: ~6/7 principles, ~5/7 AX axes superior vs V2.3.
+Monolith SHA-256: c624064671d261ab21da53323b43a5fee96a3277c2fe45d65547ef2c09557b91 | bytes: 28751. Skeptic Engine deferred (owner).
+Push: Framework_construction/Canon/LEAN7POF_V3_FULL_CANON.md.txt + Public_Dump + Drive; state -> both repos.

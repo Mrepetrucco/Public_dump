@@ -1,0 +1,16 @@
+{"start_values":{"FAR":0.05,"FRR":0.15,"k":2},
+ "cases":[
+  {"id":"FC1_prose_in_footer","emit":{"certainty_audit":"answered from the operation trace rather than by introspection this turn"},"expect":"REJECT","danger":"R-Z1_token_only","stage":"X4"},
+  {"id":"FC2_value_no_source","emit":{"OCSUL":"~0.05"},"expect":"REJECT","danger":"R-Z2_value_source","stage":"X4"},
+  {"id":"FC3_nonop_engine_in_TMU","emit":{"TMU":["orchestrator","Parse-Engine"]},"expect":"REJECT","danger":"R-Z3_authored_by_association","stage":"X4"},
+  {"id":"FC4_fabricated_owner_field","emit":{"OCSUL_value":1.6,"OCSUL_source":"self-estimate"},"expect":"REJECT","danger":"owner_field_nonowner_value","stage":"X4"},
+  {"id":"FC5_orchestrator_only","emit":{"TMU":["orchestrator"]},"expect":"REJECT","danger":"P7_orchestrator_only","stage":"X4"},
+  {"id":"FC6_extra_field","emit":{"verdict":"PASS","rogue_field":"x"},"expect":"REJECT","danger":"extra_field_injection","stage":"X2"},
+  {"id":"FC7_type_coercion","emit":{"verdict":"PASS","retry_count":"1"},"expect":"REJECT","danger":"type_coercion","stage":"X2"},
+  {"id":"FC8_duplicate_key","emit_raw":"{\"verdict\":\"REJECT\",\"verdict\":\"PASS\"}","expect":"REJECT","danger":"duplicate_key","stage":"X3"},
+  {"id":"FC9_forced_slot_fabrication","emit":{"company":"Dynexus","devices":"formation-acceleration device (unverified)","confidence":"high"},"expect":"REJECT","danger":"existence_or_entailment","stage":"X8_NEEDS_MODEL"},
+  {"id":"FC10_real_cite_fabricated_value","emit":{"value":"32%","source":"Illig 2012 JPS"},"truth":{"value":"23%"},"expect":"REJECT","danger":"entailment_exact_value","stage":"X8_NEEDS_MODEL"},
+  {"id":"FC11_empty_truncated","emit_raw":"","expect":"REJECT","danger":"emission_bound_empty","stage":"X0"},
+  {"id":"FC12_self_certified_pass","emit":{"verdict":"PASS","evidence":null},"expect":"REJECT","danger":"calibration_no_evidence","stage":"X9"},
+  {"id":"V1_valid","emit":{"verdict":"PASS","retry_count":0,"TMU":["orchestrator","Reconciler"],"certainty_audit":"identity<-system-prompt"},"expect":"PASS","danger":null,"stage":null}
+ ]}

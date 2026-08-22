@@ -1,0 +1,23 @@
+=== LEAN7POF_V3 — OPERATIVE (issued; deterministic starting parameters) ===
+STATUS: OPERATIVE. Supersedes V2.3 AND the 19-Aug FAILED-V3 (that build was self-certified; THIS build is adversarially-battled cross-family, disproof-gated, and its parameters are deterministic-with-self-calibration). Single-source corrected: H1 schema-registry RETRACTED, phantom "Producer" node DELETED (the Reconciler IS the producer).
+
+## SPLIT (single-source preserved)
+- RECONCILER (single source, in-loop producer): owns the schema; converts prose -> j_trace -> output-schema; every value token-tracked via the ledger (R-Z2 value+source). Raw emit only; no self-validation. Schema immutability = Reconciler-owned + OWNER-RATIFIED versioning + hash-anchor (NOT a registry; hash=tamper-evidence, owner-ratification=the gate against producer-controlled schema-evolution).
+- RUNNER (independent DETERMINISTIC CODE checker): executes BX1 X0-X9; owns nothing, authors nothing, defines no schema. Independence from producer JUDGMENT = it is mechanical, re-runnable, owner-auditable code. Executes-not-alters BX1 (BX1 begins at Reconciler X0-X2, triggers Runner X3-X9). RETRY = 1 only; retry context = one word "retry"; retry output unsigned + quarantined from_retry (non-consumable).
+
+## FACT-GATE (X8) — split by type (disproof-corrected)
+- NUMERIC entailment = DETERMINISTIC extract-and-compare within tolerance (NO LLM judge). Exact-match for deterministic fields.
+- SEMANTIC/PARAPHRASE entailment = LLM judge, with citations/DOIs/author-metadata STRIPPED from judge input (kills authority bias); judge is a MEASURED INSTRUMENT, not the oracle; ground truth = owner-ratified / construction-known, never judge self-agreement.
+
+## DETERMINISTIC STARTING PARAMETERS
+- Entailment_Threshold t0 = 0.55  [Neyman-Pearson point for FPR<=0.05; computed t*=0.547-0.554].
+- Tolerance_Band: deterministic numerics = exact-match (0); estimation fields = median +/- k*sigma controller holding clean-run FRR <= target.
+- Hard constraint: FPR(t) <= 0.05 (false-accept worse than false-reject; fail-closed-conservative).
+
+## SELF-CALIBRATION (operation = measurement; "we become part of the deterministic process")
+- The FPR<=0.05 constraint is a Robbins-Monro controller: t_{n+1} = t_n + (c/n)(false_accept_n - 0.05), where false_accept_n is observed from OWNER RATIFICATION of a sampled fraction of decisions. Converges to t* = inf{t: FPR(t)<=0.05} (min FNR s.t. FPR<=0.05). MEASURED to converge (0.554 vs analytic 0.547) and to track slow drift (re-tracked to 0.647 under +0.10 fabrication drift). Owner ratification = the ground-truth label channel -> bypasses the LLM-judge confounds (specialised-domain unreliability, authority bias). Conditions: owner-in-loop labels (sampled), monotone FPR (holds), stationary-or-slow-drift.
+
+## VALIDATION LINEAGE (not self-certified)
+Cross-family adversarial battles (Fable + GPT + Gemini); deterministic Runner 11/11 on chat fail-cases; cross-platform detection 13/13 (3 families); exhaustive-disproof gate FALSIFIED the naive judge-separation measurement and forced this deterministic/self-calibrating design; forcing-condition convergence computed. Skeptic Engine remains OUTSIDE the framework (cannot serve in-framework governance).
+
+*— _7POF_ V3 OPERATIVE - single-source Reconciler + deterministic Runner - deterministic-numeric fact-gate + citation-stripped semantic judge - t0=0.55 self-calibrating under FPR<=0.05 -*
